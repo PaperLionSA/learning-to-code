@@ -15,18 +15,28 @@
  * @param {number} target
  * @return {number[]}
  */
-const twoSum = (nums, target) => {
-    var map = [];
-
-    for (var i = 0; i < nums.length; i++) {
-        for (var j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                map.push(i);
-                map.push(j);
-            }
+//const twoSum = (nums, target) => {
+//     var map = [];
+//
+//     for (var i = 0; i < nums.length; i++) {
+//         for (var j = i + 1; j < nums.length; j++) {
+//             if (nums[i] + nums[j] === target) {
+//                 map.push(i);
+//                 map.push(j);
+//             }
+//         }
+//     }
+// };
+var twoSum = (nums, target) => {
+    const map = new Map();
+    for(let i in nums){
+        if(map.has(target - nums[i])) {
+            return [map.get(target - nums[i]), i];
+        } else {
+            map.set(nums[i],i);
         }
     }
-}; 
+};
 let nums = [2, 7, 11, 15];
 let target = 9;
 console.log(twoSum(nums,target));   
